@@ -2,7 +2,7 @@
 
 @section('content')
 
-<page length="8">
+<page length="10">
     <pannel title="Dashboard">
         Teste de conteúdo..
 
