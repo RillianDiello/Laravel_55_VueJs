@@ -19,6 +19,7 @@ Vue.component('topo', require('./components/Topo.vue'));
 Vue.component('pannel', require('./components/Pannel.vue'));
 Vue.component('box', require('./components/Box.vue'));
 Vue.component('page', require('./components/Page.vue'));
+Vue.component('table-list', require('./components/TableList.vue'));
 
 const app = new Vue({
     el: '#app'

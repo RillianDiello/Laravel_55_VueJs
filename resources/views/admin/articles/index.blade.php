@@ -4,9 +4,11 @@
 
 <page length="12">
     <pannel title="Lista de Artigos">
-        Teste de conteúdo..
 
-        
+        <table-list v-bind:titles="['#', 'Título', 'Descrição']" v-bind:itens="[['1', 'PHP', 'Curso Php'],
+        ['2', 'VueJs', 'Curso Vuejs']
+        ]">
+        </table-list>
 
     </pannel>
 </page>
