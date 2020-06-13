@@ -4,7 +4,7 @@
 
 <page length="10">
     <pannel title="Dashboard">
-        Teste de conteúdo..
+    <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
         <div class="row">
             <div class="col-md-4">
