@@ -1,6 +1,6 @@
 <template>
   <ol class="breadcrumb">
-    <li v-for="item in list">
+    <li v-for="item in list" :key="item.title">
       <a v-if="item.url" v-bind:class="defineClass" v-bind:href="item.url">{{item.title}}</a>
       <span v-if="!item.url">{{item.title}}</span>
     </li>

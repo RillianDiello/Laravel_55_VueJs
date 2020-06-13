@@ -46278,7 +46278,7 @@ var render = function() {
     "ol",
     { staticClass: "breadcrumb" },
     _vm._l(_vm.list, function(item) {
-      return _c("li", [
+      return _c("li", { key: item.title }, [
         item.url
           ? _c("a", { class: _vm.defineClass, attrs: { href: item.url } }, [
               _vm._v(_vm._s(item.title))
