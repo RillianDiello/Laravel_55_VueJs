@@ -4,13 +4,12 @@
       <a v-if="criar" v-bind:href="criar">Criar</a>
       <div class="form-group pull-right">
         <input type="search" class="form-control" placeholder="Buscar" v-model="search" />
-        
       </div>
     </div>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-          <th v-for="title in titles" :key="title.message">{{title}}</th>
+          <th style="cursor:pointer" v-on:click="ordemByColumn(index)" v-for="(title,index) in titles" :key="index">{{title}}</th>
           <th v-if="detalhe || editar || deletar">Ações</th>
         </tr>
       </thead>
@@ -48,23 +47,63 @@
 
 <script>
 export default {
-  props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token"],
+  props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token", "ordem", "ordemcol"],
   data: function() {
     return {
-      search: ""
+      search: "",
+      ordemAux : this.ordem || "asc" ,
+      ordemAuxCol : this.ordemcol || 0 ,
     };
   },
 
   methods: {
     executeForm: function(index) {
       document.getElementById(index).submit();
+    },
+    ordemByColumn: function(colunm){
+        this.ordemAuxCol = colunm;
+        if(this.ordemAux.toLowerCase() == 'asc'){
+            this.ordemAux = 'desc';
+        }else{
+            this.ordemAux = 'asc';
+        }
     }
   },
   computed: {
     list: function() {
+      let ordem = this.ordemAux ;
+      let ordemcol = this.ordemAuxCol;
+
+      ordem = ordem.toLowerCase();
+      ordemcol = parseInt(ordemcol);
+
+      if (ordem == "asc") {
+        this.itens.sort(function(a, b) {
+          if (a[ordemcol] > b[ordemcol]) {
+            return 1;
+          }
+          if (a[ordemcol] < b[ordemcol]) {
+            return -1;
+          }
+          return 0;
+        });
+      } else {
+        this.itens.sort(function(a, b) {
+          if (a[ordemcol] < b[ordemcol]) {
+            return 1;
+          }
+          if (a[ordemcol] > b[ordemcol]) {
+            return -1;
+          }
+          return 0;
+        });
+      }
+
       return this.itens.filter(res => {
         for (let k = 0; k < res.length; k++) {
-          if ((res[k] + "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0) {
+          if (
+            (res[k] + "").toLowerCase().indexOf(this.search.toLowerCase()) >= 0
+          ) {
             return true;
           }
         }

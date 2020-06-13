@@ -45944,24 +45944,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token"],
+  props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token", "ordem", "ordemcol"],
   data: function data() {
     return {
-      search: ""
+      search: "",
+      ordemAux: this.ordem || "asc",
+      ordemAuxCol: this.ordemcol || 0
     };
   },
 
   methods: {
     executeForm: function executeForm(index) {
       document.getElementById(index).submit();
+    },
+    ordemByColumn: function ordemByColumn(colunm) {
+      this.ordemAuxCol = colunm;
+      if (this.ordemAux.toLowerCase() == 'asc') {
+        this.ordemAux = 'desc';
+      } else {
+        this.ordemAux = 'asc';
+      }
     }
   },
   computed: {
     list: function list() {
       var _this = this;
+
+      var ordem = this.ordemAux;
+      var ordemcol = this.ordemAuxCol;
+
+      ordem = ordem.toLowerCase();
+      ordemcol = parseInt(ordemcol);
+
+      if (ordem == "asc") {
+        this.itens.sort(function (a, b) {
+          if (a[ordemcol] > b[ordemcol]) {
+            return 1;
+          }
+          if (a[ordemcol] < b[ordemcol]) {
+            return -1;
+          }
+          return 0;
+        });
+      } else {
+        this.itens.sort(function (a, b) {
+          if (a[ordemcol] < b[ordemcol]) {
+            return 1;
+          }
+          if (a[ordemcol] > b[ordemcol]) {
+            return -1;
+          }
+          return 0;
+        });
+      }
 
       return this.itens.filter(function (res) {
         for (var k = 0; k < res.length; k++) {
@@ -46020,8 +46057,20 @@ var render = function() {
         _c(
           "tr",
           [
-            _vm._l(_vm.titles, function(title) {
-              return _c("th", { key: title.message }, [_vm._v(_vm._s(title))])
+            _vm._l(_vm.titles, function(title, index) {
+              return _c(
+                "th",
+                {
+                  key: index,
+                  staticStyle: { cursor: "pointer" },
+                  on: {
+                    click: function($event) {
+                      return _vm.ordemByColumn(index)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(title))]
+              )
             }),
             _vm._v(" "),
             _vm.detalhe || _vm.editar || _vm.deletar

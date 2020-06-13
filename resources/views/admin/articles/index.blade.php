@@ -10,6 +10,7 @@
         v-bind:itens="[['1', 'PHP', 'Curso Php'],
         ['2', 'VueJs', 'Curso Vuejs']
         ]"
+        ordem="asc" ordemCol="1"
         criar="#criar" 
         detalhe="#detalhe" 
         editar="#editar" 
