@@ -23,14 +23,14 @@
               <a v-if="editar" v-bind:href="editar"> Editar |</a>
 
               <a href="#" v-on:click="executeForm(index)"> Deletar</a>
-
             </form>
             <span v-if="!token">
               <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
               <a v-if="editar" v-bind:href="editar"> Editar |</a>
               <a v-if="deletar" v-bind:href="deletar"> Deletar</a>
             </span>
-            <span v-if="token && !deletar">
+
+             <span v-if="token && !deletar">
               <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
               <a v-if="editar" v-bind:href="editar"> Editar</a>
             </span>
