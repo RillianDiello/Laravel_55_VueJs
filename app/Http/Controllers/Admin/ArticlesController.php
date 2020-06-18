@@ -16,7 +16,7 @@ class ArticlesController extends Controller
     {
         $listBreadcrumbs = json_encode([
             ["title" => "Home", "url" =>route('home')],
-            ["title" => "Lista de Compras", "url" =>""],
+            ["title" => "Lista de Artigos", "url" =>""],
         ]);
         return view('admin.articles.index', compact('listBreadcrumbs'));
     }
