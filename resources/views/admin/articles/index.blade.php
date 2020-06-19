@@ -9,16 +9,15 @@
 
     <modallink type="link" name="meuModalTeste" title="Criar" css="">
     </modallink>
-    <table-list v-bind:titles="['#', 'Título', 'Descrição']" v-bind:itens="[['1', 'PHP', 'Curso Php'],
-        ['2', 'VueJs', 'Curso Vuejs']
-        ]" ordem="asc" ordemcol="1" criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="432809">
+    <table-list v-bind:titles="['#', 'Título', 'Descrição']" v-bind:itens="{{$articlesList}}" 
+    ordem="asc" ordemcol="1" criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="432809">
 
     </table-list>
 
   </pannel>
 </page>
 <modal name="meuModalTeste">
-  <pannel title="Adicionar">  
+  <pannel title="Adicionar">
     <formulary css="" action="#" method="put" enctype="multipart/form-data" token="12345">
       <div class="form-group">
         <label for="titulo">Título</label>

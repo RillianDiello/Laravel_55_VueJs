@@ -45932,6 +45932,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token", "ordem", "ordemcol"],
@@ -45949,10 +45954,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     ordemByColumn: function ordemByColumn(colunm) {
       this.ordemAuxCol = colunm;
-      if (this.ordemAux.toLowerCase() == 'asc') {
-        this.ordemAux = 'desc';
+      if (this.ordemAux.toLowerCase() == "asc") {
+        this.ordemAux = "desc";
       } else {
-        this.ordemAux = 'asc';
+        this.ordemAux = "asc";
       }
     }
   },
@@ -45968,34 +45973,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       if (ordem == "asc") {
         this.itens.sort(function (a, b) {
-          if (a[ordemcol] > b[ordemcol]) {
+          if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
-          if (a[ordemcol] < b[ordemcol]) {
+          if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return -1;
           }
           return 0;
         });
       } else {
         this.itens.sort(function (a, b) {
-          if (a[ordemcol] < b[ordemcol]) {
+          if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return 1;
           }
-          if (a[ordemcol] > b[ordemcol]) {
+          if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return -1;
           }
           return 0;
         });
       }
-
-      return this.itens.filter(function (res) {
-        for (var k = 0; k < res.length; k++) {
-          if ((res[k] + "").toLowerCase().indexOf(_this.search.toLowerCase()) >= 0) {
-            return true;
+      if (this.search) {
+        return this.itens.filter(function (res) {
+          for (var k = 0; k < res.length; k++) {
+            if ((res[k] + "").toLowerCase().indexOf(_this.search.toLowerCase()) >= 0) {
+              return true;
+            }
           }
-        }
-        return false;
-      });
+          return false;
+        });
+      }
       return this.itens;
     }
   }

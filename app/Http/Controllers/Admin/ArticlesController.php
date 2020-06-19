@@ -18,7 +18,13 @@ class ArticlesController extends Controller
             ["title" => "Home", "url" =>route('home')],
             ["title" => "Lista de Artigos", "url" =>""],
         ]);
-        return view('admin.articles.index', compact('listBreadcrumbs'));
+
+        $articlesList = json_encode([
+            ["id" =>1, "title" =>  "PHP OO",  "description" => "Curso de PHP Orientado Objetos"],
+            ["id" =>2, "title" =>  "VUE JS",  "description" => "Curso de Vue Js"]
+        ]);
+
+        return view('admin.articles.index', compact('listBreadcrumbs'), compact('articlesList'));
     }
 
     /**
