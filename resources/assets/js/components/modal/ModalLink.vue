@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <span>
     <button
       v-if="!type || (type != 'button' && type != 'link')"
       type="button"
@@ -21,7 +21,7 @@
       data-toggle="modal"
       v-bind:data-target="'#' + name"
     >{{title}}</a>
-  </div>
+  </span>
 </template>
 
 <script>

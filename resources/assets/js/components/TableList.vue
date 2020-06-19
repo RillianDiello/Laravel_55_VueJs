@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="form-inline">
-      <a v-if="criar" v-bind:href="criar">Criar</a>
+      <a v-if="criar && !modal" v-bind:href="criar">Criar</a>
+      <modallink v-if="criar && modal" type="link" name="adicionar" title="Criar" css></modallink>
       <div class="form-group pull-right">
         <input type="search" class="form-control" placeholder="Buscar" v-model="search" />
       </div>
@@ -29,19 +30,24 @@
               <input type="hidden" name="_token" v-bind:value="token" />
 
               <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
-              <a v-if="editar" v-bind:href="editar">Editar |</a>
+
+              <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
+              <modallink v-if="editar && modal" type="link" name="editar" title="Editar" css></modallink>
 
               <a href="#" v-on:click="executeForm(index)">Deletar</a>
             </form>
             <span v-if="!token">
               <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
-              <a v-if="editar" v-bind:href="editar">Editar |</a>
+              <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
+              <modallink v-if="editar && modal" type="link" name="editar" title="Editar" css></modallink>
+
               <a v-if="deletar" v-bind:href="deletar">Deletar</a>
             </span>
 
             <span v-if="token && !deletar">
               <a v-if="detalhe" v-bind:href="detalhe">Detalhe |</a>
-              <a v-if="editar" v-bind:href="editar">Editar</a>
+              <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
+              <modallink v-if="editar && modal" type="link" name="editar" title="Editar" css></modallink>
             </span>
           </td>
         </tr>
@@ -61,7 +67,8 @@ export default {
     "deletar",
     "token",
     "ordem",
-    "ordemcol"
+    "ordemcol",
+    "modal"
   ],
   data: function() {
     return {
@@ -97,7 +104,7 @@ export default {
           if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
-          if (Object.values(a)[ordemcol] <Object.values(b)[ordemcol]) {
+          if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return -1;
           }
           return 0;
