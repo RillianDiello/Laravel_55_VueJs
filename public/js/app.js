@@ -1403,19 +1403,20 @@ __webpack_require__(14);
 
 window.Vue = __webpack_require__(38);
 
-
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */]);
+;
 
 // Vuex
+
 var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
-    state: {
-        itens: {}
-    },
-    mutations: {
-        setItens: function setItens(state, obj) {
-            state.itens = obj;
-        }
+  state: {
+    item: {}
+  },
+  mutations: {
+    setItem: function setItem(state, obj) {
+      state.item = obj;
     }
+  }
 });
 
 /**
@@ -1434,8 +1435,8 @@ Vue.component('modal', __webpack_require__(65));
 Vue.component('modallink', __webpack_require__(68));
 Vue.component('formulary', __webpack_require__(71));
 var app = new Vue({
-    el: '#app',
-    store: store
+  el: '#app',
+  store: store
 });
 
 /***/ }),
@@ -45962,9 +45963,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["titles", "itens", "criar", "detalhe", "editar", "deletar", "token", "ordem", "ordemcol", "modal"],
+  props: ["titles", "itens", "criar", "detalhes", "editar", "deletar", "token", "ordem", "ordemcol", "modal"],
   data: function data() {
     return {
       search: "",
@@ -46051,12 +46084,7 @@ var render = function() {
         _vm._v(" "),
         _vm.criar && _vm.modal
           ? _c("modallink", {
-              attrs: {
-                type: "link",
-                name: "adicionar",
-                title: "Criar",
-                css: ""
-              }
+              attrs: { type: "link", name: "add", title: "Criar", css: "" }
             })
           : _vm._e(),
         _vm._v(" "),
@@ -46108,7 +46136,7 @@ var render = function() {
               )
             }),
             _vm._v(" "),
-            _vm.detalhe || _vm.editar || _vm.deletar
+            _vm.detalhes || _vm.editar || _vm.deletar
               ? _c("th", [_vm._v("Ações")])
               : _vm._e()
           ],
@@ -46127,7 +46155,7 @@ var render = function() {
                 return _c("td", { key: el }, [_vm._v(_vm._s(el))])
               }),
               _vm._v(" "),
-              _vm.detalhe || _vm.editar || _vm.deletar
+              _vm.detalhes || _vm.editar || _vm.deletar
                 ? _c("td", [
                     _vm.deletar && _vm.token
                       ? _c(
@@ -46153,10 +46181,22 @@ var render = function() {
                               domProps: { value: _vm.token }
                             }),
                             _vm._v(" "),
-                            _vm.detalhe
-                              ? _c("a", { attrs: { href: _vm.detalhe } }, [
-                                  _vm._v("Detalhe |")
+                            _vm.detalhes && !_vm.modal
+                              ? _c("a", { attrs: { href: _vm.detalhes } }, [
+                                  _vm._v("detalhes |")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detalhes && _vm.modal
+                              ? _c("modallink", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "details",
+                                    title: "Detalhes | ",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.editar && !_vm.modal
@@ -46168,9 +46208,10 @@ var render = function() {
                             _vm.editar && _vm.modal
                               ? _c("modallink", {
                                   attrs: {
+                                    item: item,
                                     type: "link",
-                                    name: "editar",
-                                    title: "Editar",
+                                    name: "edit",
+                                    title: "Editar | ",
                                     css: ""
                                   }
                                 })
@@ -46197,10 +46238,22 @@ var render = function() {
                       ? _c(
                           "span",
                           [
-                            _vm.detalhe
-                              ? _c("a", { attrs: { href: _vm.detalhe } }, [
-                                  _vm._v("Detalhe |")
+                            _vm.detalhes && !_vm.modal
+                              ? _c("a", { attrs: { href: _vm.detalhes } }, [
+                                  _vm._v("detalhes |")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detalhes && _vm.modal
+                              ? _c("modallink", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "details",
+                                    title: "Detalhes | ",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.editar && !_vm.modal
@@ -46213,8 +46266,8 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     type: "link",
-                                    name: "editar",
-                                    title: "Editar",
+                                    name: "edit",
+                                    title: "Editar |",
                                     css: ""
                                   }
                                 })
@@ -46234,10 +46287,22 @@ var render = function() {
                       ? _c(
                           "span",
                           [
-                            _vm.detalhe
-                              ? _c("a", { attrs: { href: _vm.detalhe } }, [
-                                  _vm._v("Detalhe |")
+                            _vm.detalhes && !_vm.modal
+                              ? _c("a", { attrs: { href: _vm.detalhes } }, [
+                                  _vm._v("detalhes |")
                                 ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.detalhes && _vm.modal
+                              ? _c("modallink", {
+                                  attrs: {
+                                    item: item,
+                                    type: "link",
+                                    name: "details",
+                                    title: "Detalhes | ",
+                                    css: ""
+                                  }
+                                })
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.editar && !_vm.modal
@@ -46250,8 +46315,8 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     type: "link",
-                                    name: "editar",
-                                    title: "Editar",
+                                    name: "edit",
+                                    title: "Editar |",
                                     css: ""
                                   }
                                 })
@@ -46578,9 +46643,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["type", "name", "title", "css"]
+  props: ["type", "name", "title", "css", "item"],
+  methods: {
+    fillForm: function fillForm() {
+      this.$store.commit('setItem', this.item);
+    }
+  }
 });
 
 /***/ }),
@@ -46592,49 +46691,117 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("span", [
-    !_vm.type || (_vm.type != "button" && _vm.type != "link")
-      ? _c(
-          "button",
-          {
-            class: _vm.css || "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v(_vm._s(_vm.title))]
-        )
+    _vm.item
+      ? _c("span", [
+          !_vm.type || (_vm.type != "button" && _vm.type != "link")
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "button"
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "link"
+            ? _c(
+                "a",
+                {
+                  class: _vm.css || "",
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.fillForm()
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e()
+        ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.type == "button"
-      ? _c(
-          "button",
-          {
-            class: _vm.css || "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v(_vm._s(_vm.title))]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.type == "link"
-      ? _c(
-          "a",
-          {
-            class: _vm.css || "",
-            attrs: {
-              href: "#",
-              "data-toggle": "modal",
-              "data-target": "#" + _vm.name
-            }
-          },
-          [_vm._v(_vm._s(_vm.title))]
-        )
+    !_vm.item
+      ? _c("span", [
+          !_vm.type || (_vm.type != "button" && _vm.type != "link")
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "button"
+            ? _c(
+                "button",
+                {
+                  class: _vm.css || "btn btn-primary",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.type == "link"
+            ? _c(
+                "a",
+                {
+                  class: _vm.css || "",
+                  attrs: {
+                    href: "#",
+                    "data-toggle": "modal",
+                    "data-target": "#" + _vm.name
+                  }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              )
+            : _vm._e()
+        ])
       : _vm._e()
   ])
 }

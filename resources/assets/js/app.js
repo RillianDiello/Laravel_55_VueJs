@@ -9,20 +9,21 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
-
 Vue.use(Vuex);
+;
 
 // Vuex
+
 const store = new Vuex.Store({
     state:{
-        itens:{}
+      item:{}
     },
-    mutations: {
-        setItens(state, obj){
-            state.itens = obj;
-        }        
-    },
-});
+    mutations:{
+      setItem(state,obj){
+        state.item = obj;
+      }
+    }
+  });
 
 
 /**
