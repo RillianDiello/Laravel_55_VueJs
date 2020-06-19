@@ -8,6 +8,22 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+// Vuex
+const store = new Vuex.Store({
+    state:{
+        itens:{}
+    },
+    mutations: {
+        setItens(state, obj){
+            state.itens = obj;
+        }        
+    },
+});
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -25,5 +41,6 @@ Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modallink', require('./components/modal/ModalLink.vue'));
 Vue.component('formulary', require('./components/Formulary.vue'));
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });
