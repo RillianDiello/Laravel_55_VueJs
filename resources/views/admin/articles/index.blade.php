@@ -14,26 +14,26 @@
 
   </pannel>
 </page>
-<modal name="add">
-  <pannel title="Adicionar">
-    <formulary css="" action="#" method="put" enctype="multipart/form-data" token="12345">
-      <div class="form-group">
-        <label for="titulo">Título</label>
-        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
-      </div>
-      <div class="form-group">
-        <label for="descricao">Descrição</label>
-        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
-      </div>
-      <button class="btn btn-info">Adicionar</button>
-    </formulary>
-  </pannel>
+<modal name="add" title="Adicionar">
 
+  <formulary id="form-add" css="" action="#" method="put" enctype="multipart/form-data" token="12345">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
+    </div>
+  </formulary>
+  <span slot="buttons">
+    <button form="form-add" class="btn btn-info">Adicionar</button>
+  </span>
 </modal>
 
-<modal name="edit">
-  <pannel title="Editar">
-    <formulary css="" action="#" method="put" enctype="multipart/form-data" token="12345">
+<modal name="edit" title="Editar">
+  
+    <formulary id="form-edit" css="" action="#" method="put" enctype="multipart/form-data" token="12345">
       <div class="form-group">
         <label for="titulo">Título</label>
         <input type="text" class="form-control" id="titulo" name="titulo" v-model="$store.state.item.title" placeholder="Título">
@@ -42,15 +42,15 @@
         <label for="descricao">Descrição</label>
         <input type="text" class="form-control" id="descricao" name="descricao" v-model="$store.state.item.description" placeholder="Descrição">
       </div>
-      <button class="btn btn-info">Atualizar</button>
+      
     </formulary>
-  </pannel>
+    <span slot="buttons">
+    <button form="form-edit" class="btn btn-info">Atualizar</button>
+  </span>
 </modal>
 
-<modal name="details">
-  <pannel v-bind:title="$store.state.item.title">
-    <p>@{{$store.state.item.description}}</p>    
-  </pannel>
+<modal name="details" v-bind:title="$store.state.item.title">  
+    <p>@{{$store.state.item.description}}</p>  
 </modal>
 
 @endsection
