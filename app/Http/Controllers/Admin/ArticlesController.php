@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +21,7 @@ class ArticlesController extends Controller
             ["title" => "Lista de Artigos", "url" => ""],
         ]);
 
-        $articlesList = json_encode(Article::select('id','title', 'description', 'datePublish')->get());
+        $articlesList = json_encode(Article::select('id', 'title', 'description', 'datePublish')->get());
 
         return view('admin.articles.index', compact('listBreadcrumbs'), compact('articlesList'));
     }
@@ -44,8 +45,18 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-
         $data = $request->all();
+        $validation =  Validator::make($data, [
+            "title" => "required",
+            "description" => "required",            
+            "content" => "required",            
+            "datePublish" => "required"
+        ]);
+
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
         Article::create($data);
         return redirect()->back();
     }
