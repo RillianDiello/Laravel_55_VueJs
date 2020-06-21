@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,14 +16,11 @@ class ArticlesController extends Controller
     public function index()
     {
         $listBreadcrumbs = json_encode([
-            ["title" => "Home", "url" =>route('home')],
-            ["title" => "Lista de Artigos", "url" =>""],
+            ["title" => "Home", "url" => route('home')],
+            ["title" => "Lista de Artigos", "url" => ""],
         ]);
 
-        $articlesList = json_encode([
-            ["id" =>1, "title" =>  "PHP OO",  "description" => "Curso de PHP Orientado Objetos"],
-            ["id" =>2, "title" =>  "VUE JS",  "description" => "Curso de Vue Js"]
-        ]);
+        $articlesList = json_encode(Article::select('id','title', 'description', 'datePublish')->get());
 
         return view('admin.articles.index', compact('listBreadcrumbs'), compact('articlesList'));
     }
@@ -45,7 +43,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $data = $request->all();
+        Article::create($data);
+        return redirect()->back();
     }
 
     /**

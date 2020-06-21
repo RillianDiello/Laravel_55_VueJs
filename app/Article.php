@@ -9,4 +9,13 @@ class Article extends Model
 {
     //
     use SoftDeletes;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'datePublish'
+    ];
+
+    protected $dates =['deleted_at'];
 }
