@@ -48,8 +48,8 @@ class ArticlesController extends Controller
         $data = $request->all();
         $validation =  Validator::make($data, [
             "title" => "required",
-            "description" => "required",            
-            "content" => "required",            
+            "description" => "required",
+            "content" => "required",
             "datePublish" => "required"
         ]);
 
@@ -69,7 +69,7 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Article::find($id); // retorna um json
     }
 
     /**
@@ -81,6 +81,7 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -92,7 +93,23 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $request->all();
+
+        $validation =  Validator::make($data, [
+            "title" => "required",
+            "description" => "required",
+            "content" => "required",
+            "datePublish" => "required"
+        ]);
+
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
+        Article::find($id)->update($data);
+
+        return redirect()->back();
     }
 
     /**

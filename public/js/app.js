@@ -47105,6 +47105,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["titles", "itens", "criar", "detalhes", "editar", "deletar", "token", "ordem", "ordemcol", "modal"],
@@ -47302,6 +47323,7 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     item: item,
+                                    url: _vm.detalhes,
                                     type: "link",
                                     name: "details",
                                     title: "Detalhes | ",
@@ -47320,6 +47342,7 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     item: item,
+                                    url: _vm.editar,
                                     type: "link",
                                     name: "edit",
                                     title: "Editar | ",
@@ -47359,6 +47382,7 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     item: item,
+                                    url: _vm.detalhes,
                                     type: "link",
                                     name: "details",
                                     title: "Detalhes | ",
@@ -47376,6 +47400,8 @@ var render = function() {
                             _vm.editar && _vm.modal
                               ? _c("modallink", {
                                   attrs: {
+                                    item: item,
+                                    url: _vm.editar,
                                     type: "link",
                                     name: "edit",
                                     title: "Editar |",
@@ -47400,7 +47426,7 @@ var render = function() {
                           [
                             _vm.detalhes && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detalhes } }, [
-                                  _vm._v("detalhes |")
+                                  _vm._v("Detalhe |")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -47408,6 +47434,7 @@ var render = function() {
                               ? _c("modallink", {
                                   attrs: {
                                     item: item,
+                                    url: _vm.detalhes,
                                     type: "link",
                                     name: "details",
                                     title: "Detalhes | ",
@@ -47425,6 +47452,8 @@ var render = function() {
                             _vm.editar && _vm.modal
                               ? _c("modallink", {
                                   attrs: {
+                                    item: item,
+                                    url: _vm.editar,
                                     type: "link",
                                     name: "edit",
                                     title: "Editar |",
@@ -47842,10 +47871,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["type", "name", "title", "css", "item"],
+  props: ['type', 'name', 'title', 'css', 'item', 'url'],
   methods: {
     fillForm: function fillForm() {
-      this.$store.commit('setItem', this.item);
+      var _this = this;
+
+      axios.get(this.url + this.item.id).then(function (res) {
+        _this.$store.commit('setItem', res.data);
+      });
     }
   }
 });

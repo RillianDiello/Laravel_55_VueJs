@@ -55,10 +55,12 @@
 
 <script>
 export default {
-  props: ["type", "name", "title", "css", "item"],
+  props: ['type', 'name', 'title', 'css', 'item', 'url'],
   methods: {
     fillForm: function() {
-      this.$store.commit('setItem', this.item);
+      axios.get(this.url + this.item.id).then(res => {
+        this.$store.commit('setItem', res.data);
+      });
     }
   }
 };
