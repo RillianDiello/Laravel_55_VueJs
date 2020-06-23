@@ -29,33 +29,7 @@
               <input type="hidden" name="_method" value="DELETE" />
               <input type="hidden" name="_token" v-bind:value="token" />
 
-              <a v-if="detalhes && !modal" v-bind:href="detalhes">detalhes |</a>
-              <modallink
-                v-if="detalhes && modal"
-                v-bind:item="item" 
-                v-bind:url="detalhes"
-                type="link"
-                name="details"
-                title="Detalhes | "
-                css
-              ></modallink>
-
-              <a v-if="editar && !modal" 
-              v-bind:href="editar">Editar |</a>
-              <modallink
-                v-if="editar && modal"
-                v-bind:item="item"
-                v-bind:url="editar"
-                type="link"
-                name="edit"
-                title="Editar | "
-                css
-              ></modallink>
-
-              <a href="#" v-on:click="executeForm(index)">Deletar</a>
-            </form>
-            <span v-if="!token">
-              <a v-if="detalhes && !modal" v-bind:href="detalhes">detalhes |</a>
+              <a v-if="detalhes && !modal" v-bind:href="detalhes">Detalhes |</a>
               <modallink
                 v-if="detalhes && modal"
                 v-bind:item="item"
@@ -72,8 +46,33 @@
                 v-bind:item="item"
                 v-bind:url="editar"
                 type="link"
-                name="edit"
-                title="Editar |"
+                name="editar"
+                title=" Editar |"
+                css
+              ></modallink>
+
+              <a href="#" v-on:click="executeForm(index)">Deletar</a>
+            </form>
+            <span v-if="!token">
+              <a v-if="detalhes && !modal" v-bind:href="detalhes">Detalhes |</a>
+              <modallink
+                v-if="detalhes && modal"
+                v-bind:item="item"
+                v-bind:url="detalhes"
+                type="link"
+                name="details"
+                title="Detalhes | "
+                css
+              ></modallink>
+
+              <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
+              <modallink
+                v-if="editar && modal"
+                type="link"
+                v-bind:item="item"
+                v-bind:url="editar"
+                name="editar"
+                title=" Editar |"
                 css
               ></modallink>
 
@@ -84,21 +83,21 @@
               <a v-if="detalhes && !modal" v-bind:href="detalhes">Detalhe |</a>
               <modallink
                 v-if="detalhes && modal"
-                v-bind:item="item" 
+                v-bind:item="item"
                 v-bind:url="detalhes"
                 type="link"
                 name="details"
                 title="Detalhes | "
                 css
               ></modallink>
-              <a v-if="editar && !modal" v-bind:href="editar">Editar |</a>
+              <a v-if="editar && !modal" v-bind:href="editar">Editar</a>
               <modallink
                 v-if="editar && modal"
+                type="link"
                 v-bind:item="item"
                 v-bind:url="editar"
-                type="link"
-                name="edit"
-                title="Editar |"
+                name="editar"
+                title=" Editar"
                 css
               ></modallink>
             </span>

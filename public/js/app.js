@@ -47125,7 +47125,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["titles", "itens", "criar", "detalhes", "editar", "deletar", "token", "ordem", "ordemcol", "modal"],
@@ -47315,7 +47314,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm.detalhes && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detalhes } }, [
-                                  _vm._v("detalhes |")
+                                  _vm._v("Detalhes |")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -47344,8 +47343,8 @@ var render = function() {
                                     item: item,
                                     url: _vm.editar,
                                     type: "link",
-                                    name: "edit",
-                                    title: "Editar | ",
+                                    name: "editar",
+                                    title: " Editar |",
                                     css: ""
                                   }
                                 })
@@ -47374,7 +47373,7 @@ var render = function() {
                           [
                             _vm.detalhes && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.detalhes } }, [
-                                  _vm._v("detalhes |")
+                                  _vm._v("Detalhes |")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -47400,11 +47399,11 @@ var render = function() {
                             _vm.editar && _vm.modal
                               ? _c("modallink", {
                                   attrs: {
+                                    type: "link",
                                     item: item,
                                     url: _vm.editar,
-                                    type: "link",
-                                    name: "edit",
-                                    title: "Editar |",
+                                    name: "editar",
+                                    title: " Editar |",
                                     css: ""
                                   }
                                 })
@@ -47445,18 +47444,18 @@ var render = function() {
                             _vm._v(" "),
                             _vm.editar && !_vm.modal
                               ? _c("a", { attrs: { href: _vm.editar } }, [
-                                  _vm._v("Editar |")
+                                  _vm._v("Editar")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
                             _vm.editar && _vm.modal
                               ? _c("modallink", {
                                   attrs: {
+                                    type: "link",
                                     item: item,
                                     url: _vm.editar,
-                                    type: "link",
-                                    name: "edit",
-                                    title: "Editar |",
+                                    name: "editar",
+                                    title: " Editar",
                                     css: ""
                                   }
                                 })
@@ -47877,6 +47876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.get(this.url + this.item.id).then(function (res) {
+
         _this.$store.commit('setItem', res.data);
       });
     }
@@ -48096,11 +48096,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return this.method.toLowerCase();
       }
       if (this.method.toLowerCase() == "put") {
-        return "put";
+        this.alterMethod = "put";
       }
       if (this.method.toLowerCase() == "delete") {
-        return "delete";
+        this.alterMethod = "delete";
       }
+
+      return "post";
     }
   }
 });

@@ -56,9 +56,8 @@
   </span>
 </modal>
 
-<modal name="edit" title="Editar">
-
-  <formulary id="form-edit" v-bind:action="'/admin/articles/' + $store.state.item.id"  method='put' enctype="" token="{{ csrf_token() }}">
+<modal name="editar" title="Editar">
+  <formulary id="form-edit" v-bind:action="'/admin/articles/' + $store.state.item.id"  method="put" enctype="" token="{{ csrf_token() }}">
     <div class="form-group">
       <label for="titulo">Título</label>
       <input type="text" class="form-control" id="titulo" name="title" v-model="$store.state.item.title" placeholder="Título">
@@ -71,12 +70,10 @@
       <label for="conteudo">Conteúdo</label>
       <textarea class="form-control" id="conteudo" name="content" v-model="$store.state.item.content"></textarea>
     </div>
-
     <div class="form-group">
       <label for="data">Data</label>
       <input type="datetime-local" class="form-control" id="data" name="datePublish" v-model="$store.state.item.datePublish">
     </div>
-
   </formulary>
   <span slot="buttons">
     <button form="form-edit" class="btn btn-info">Atualizar</button>

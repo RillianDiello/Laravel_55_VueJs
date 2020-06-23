@@ -27,12 +27,14 @@ export default {
       ) {
         return this.method.toLowerCase();
       }
-      if (this.method.toLowerCase() == "put") {
-        return "put";
-      }
-      if (this.method.toLowerCase() == "delete") {
-        return "delete";
-      }
+      if(this.method.toLowerCase() == "put" ){
+            this.alterMethod = "put";
+          }
+          if(this.method.toLowerCase() == "delete" ){
+            this.alterMethod = "delete";
+          }
+
+          return "post";
     }
   }
 };

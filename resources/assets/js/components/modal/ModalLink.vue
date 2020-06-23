@@ -59,6 +59,7 @@ export default {
   methods: {
     fillForm: function() {
       axios.get(this.url + this.item.id).then(res => {
+        
         this.$store.commit('setItem', res.data);
       });
     }
