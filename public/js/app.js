@@ -47156,11 +47156,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var ordem = this.ordemAux;
       var ordemcol = this.ordemAuxCol;
 
+      var list = this.itens.data;
+
       ordem = ordem.toLowerCase();
       ordemcol = parseInt(ordemcol);
 
       if (ordem == "asc") {
-        this.itens.sort(function (a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -47170,7 +47172,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return 0;
         });
       } else {
-        this.itens.sort(function (a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -47181,7 +47183,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
       if (this.search) {
-        return this.itens.filter(function (res) {
+        return list.filter(function (res) {
           res = Object.values(res);
           for (var k = 0; k < res.length; k++) {
             if ((res[k] + "").toLowerCase().indexOf(_this.search.toLowerCase()) >= 0) {
@@ -47191,7 +47193,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return false;
         });
       }
-      return this.itens;
+      return list;
     }
   }
 });

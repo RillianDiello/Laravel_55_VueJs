@@ -22,12 +22,12 @@
     <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
 
-    <table-list v-bind:titles="['#', 'Título', 'Descrição', 'Data']" v-bind:itens="{{$articlesList}}"
-     ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/articles/" editar="/admin/articles/" 
-     deletar="/admin/articles/" token="{{csrf_token()}}" modal="yes">
+    <table-list v-bind:titles="['#', 'Título', 'Descrição', 'Data']" v-bind:itens="{{json_encode($articlesList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/articles/" editar="/admin/articles/" deletar="/admin/articles/" token="{{csrf_token()}}" modal="yes">
 
     </table-list>
-
+    <div align="center">
+      {{$articlesList->links()}}
+    </div>
   </pannel>
 </page>
 <modal name="add" title="Adicionar">
@@ -57,7 +57,7 @@
 </modal>
 
 <modal name="editar" title="Editar">
-  <formulary id="form-edit" v-bind:action="'/admin/articles/' + $store.state.item.id"  method="put" enctype="" token="{{ csrf_token() }}">
+  <formulary id="form-edit" v-bind:action="'/admin/articles/' + $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
     <div class="form-group">
       <label for="titulo">Título</label>
       <input type="text" class="form-control" id="titulo" name="title" v-model="$store.state.item.title" placeholder="Título">

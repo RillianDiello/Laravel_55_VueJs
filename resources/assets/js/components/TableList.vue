@@ -147,12 +147,14 @@ export default {
     list: function() {
       let ordem = this.ordemAux;
       let ordemcol = this.ordemAuxCol;
+     
+      let list = this.itens.data;
 
       ordem = ordem.toLowerCase();
       ordemcol = parseInt(ordemcol);
 
       if (ordem == "asc") {
-        this.itens.sort(function(a, b) {
+        list.sort(function(a, b) {
           if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -162,7 +164,7 @@ export default {
           return 0;
         });
       } else {
-        this.itens.sort(function(a, b) {
+        list.sort(function(a, b) {
           if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -173,7 +175,7 @@ export default {
         });
       }
       if (this.search) {
-        return this.itens.filter(res => {
+        return list.filter(res => {
           res = Object.values(res);
           for (let k = 0; k < res.length; k++) {
             if (
@@ -186,7 +188,7 @@ export default {
           return false;
         });
       }
-      return this.itens;
+      return list;
     }
   }
 };
