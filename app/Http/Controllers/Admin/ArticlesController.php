@@ -120,6 +120,9 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id)
+
+        Article::find($id)->delete();
+        return redirect()->back();
     }
 }

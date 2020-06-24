@@ -25,7 +25,7 @@
           <td v-for="el in item" :key="el">{{el}}</td>
 
           <td v-if="detalhes || editar || deletar">
-            <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar" method="post">
+            <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar + item.id" method="post">
               <input type="hidden" name="_method" value="DELETE" />
               <input type="hidden" name="_token" v-bind:value="token" />
 
