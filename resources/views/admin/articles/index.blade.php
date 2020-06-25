@@ -80,7 +80,7 @@
   </span>
 </modal>
 
-<modal name="details" v-bind:titulo="$store.state.item.title">
+<modal name="details" v-bind:title="$store.state.item.title">
   <p>@{{$store.state.item.description}}</p>
   <p>@{{$store.state.item.content}}</p>
 </modal>

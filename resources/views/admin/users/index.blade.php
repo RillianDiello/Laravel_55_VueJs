@@ -73,7 +73,7 @@
   </span>
 </modal>
 
-<modal name="details" v-bind:titulo="$store.state.item.name">
+<modal name="details" v-bind:title="$store.state.item.name">
   <p>@{{$store.state.item.email}}</p>
 </modal>
 

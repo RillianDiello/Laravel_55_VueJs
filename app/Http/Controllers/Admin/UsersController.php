@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -23,8 +24,7 @@ class UsersController extends Controller
 
         $modelList = User::select('id', 'name', 'email')->paginate(2);
 
-        return view('admin.users.index', compact('listBreadcrumbs','modelList'));
-    
+        return view('admin.users.index', compact('listBreadcrumbs', 'modelList'));
     }
 
     /**
@@ -82,7 +82,6 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-       
     }
 
     /**
@@ -98,11 +97,25 @@ class UsersController extends Controller
         //TODO
         $data = $request->all();
 
-        $validation =  Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
+
+        if (isset($data['password']) && $data['password'] != "") {
+
+
+            $validation =  Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => ['required','string','email','max:255', Rule::unique('users')->ignore($id)],                
+                'password' => 'required|string|min:6',
+            ]);
+
+            $data['password'] = bcrypt($data['password']);
+        }else{
+            $validation =  Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => ['required','string','email','max:255', Rule::unique('users')->ignore($id)]              
+            ]);
+
+            unset($data['password'] );
+        }
 
         if ($validation->fails()) {
             return redirect()->back()->withErrors($validation)->withInput();
