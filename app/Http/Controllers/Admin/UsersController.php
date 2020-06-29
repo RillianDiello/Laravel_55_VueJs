@@ -22,7 +22,7 @@ class UsersController extends Controller
             ["title" => "Lista de Usuarios", "url" => ""],
         ]);
 
-        $modelList = User::select('id', 'name', 'email')->paginate(2);
+        $modelList = User::select('id', 'name', 'email')->paginate(5);
 
         return view('admin.users.index', compact('listBreadcrumbs', 'modelList'));
     }

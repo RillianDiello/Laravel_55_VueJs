@@ -17,12 +17,12 @@
   </div>
   @endif
 
-  <pannel title="Lista de Usuários">
+  <pannel title="Lista de Autores">
 
     <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
 
-    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/authors/" editar="/admin/authors/" deletar="/admin/authors/" token="{{csrf_token()}}" modal="yes">
+    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/users/" editar="/admin/users/" deletar="/admin/users/" token="{{csrf_token()}}" modal="yes">
 
     </table-list>
     <div align="center">
@@ -32,7 +32,7 @@
 </page>
 <modal name="add" title="Adicionar">
 
-  <formulary id="form-add" css="" action="{{route('authors.store')}}" method="post" enctype="" token="{{csrf_token()}}">
+  <formulary id="form-add" css="" action="{{route('users.store')}}" method="post" enctype="" token="{{csrf_token()}}">
     <div class="form-group">
       <label for="name">Nome</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{old('name')}}">
@@ -53,7 +53,7 @@
 </modal>
 
 <modal name="editar" title="Editar">
-  <formulary id="form-edit" v-bind:action="'/admin/authors/' + $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
+  <formulary id="form-edit" v-bind:action="'/admin/users/' + $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
     <div class="form-group">
       <label for="name">Nome</label>
       <input type="text" class="form-control" id="name" name="name" v-model="$store.state.item.name" placeholder="Nome">

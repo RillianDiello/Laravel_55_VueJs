@@ -14,7 +14,7 @@
                 <box qtd="150" title="Usuarios" url="{{route('users.index')}}" color="blue" icon="ion ion-person-stalker"></box>
             </div>
             <div class="col-md-4">
-                <box qtd="3" title="Autores" url="#" color="red" icon="ion ion-person"></box>
+                <box qtd="3" title="Autores" url="{{route('authors.index')}}" color="red" icon="ion ion-person"></box>
             </div>
 
         </div>
