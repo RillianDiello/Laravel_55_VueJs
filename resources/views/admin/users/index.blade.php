@@ -41,9 +41,18 @@
       <label for="email">Email</label>
       <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
     </div>
+
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
+    </div>
+
+    <div class="form-group">
+      <label for="author">Autor</label>  
+      <select class="form-control" id="isAuthor" name="isAuthor">
+        <option {{(old('isAuthor') && old('isAuthor') == '0' ? 'selected' : '' )}} value="0"> Não</option>
+        <option {{(old('isAuthor') && old('isAuthor') == '1' ? 'selected' : '' )}} value="1"> Sim</option>
+      </select>
     </div>
 
   </formulary>
@@ -65,6 +74,14 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" name="password">
+    </div>
+
+    <div class="form-group">
+      <label for="author">Autor</label>  
+      <select class="form-control" id="isAuthor" name="isAuthor" v-model="$store.state.item.isAuthor">
+        <option value="0"> Não</option>
+        <option value="1"> Sim</option>
+      </select>
     </div>
 
   </formulary>

@@ -22,7 +22,7 @@
     <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
 
-    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/users/" editar="/admin/users/" deletar="/admin/users/" token="{{csrf_token()}}" modal="yes">
+    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/users/" editar="/admin/users/" modal="yes">
 
     </table-list>
     <div align="center">
@@ -46,6 +46,15 @@
       <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
     </div>
 
+    <div class="form-group">
+      <label for="author">Autor</label>  
+      <select class="form-control" id="isAuthor" name="isAuthor">
+        <option {{(old('isAuthor') && old('isAuthor') == '0' ? 'selected' : '' )}} value="0"> Não</option>
+        <option {{(old('isAuthor') && old('isAuthor') == '1' ? 'selected' : '' )}} {{(!old('isAuthor') ? 'selected' : '')}} value="1"> Sim</option>
+      </select>
+    </div>
+
+
   </formulary>
   <span slot="buttons">
     <button form="form-add" class="btn btn-info">Adicionar</button>
@@ -67,6 +76,15 @@
       <input type="password" class="form-control" id="password" name="password">
     </div>
 
+
+    <div class="form-group">
+      <label for="author">Autor</label>  
+      <select class="form-control" id="isAuthor" name="isAuthor" v-model="$store.state.item.isAuthor">
+        <option value="0"> Não</option>
+        <option value="1"> Sim</option>
+      </select>
+    </div>
+     
   </formulary>
   <span slot="buttons">
     <button form="form-edit" class="btn btn-info">Atualizar</button>

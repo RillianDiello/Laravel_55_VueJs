@@ -22,7 +22,7 @@ class AuthorsController extends Controller
             ["title" => "Lista de Autores", "url" => ""],
         ]);
 
-        $modelList = User::select('id', 'name', 'email')->paginate(5);
+        $modelList = User::select('id', 'name', 'email')->where('isAuthor', '=', '1')->paginate(5);
 
         return view('admin.authors.index', compact('listBreadcrumbs', 'modelList'));
     }
