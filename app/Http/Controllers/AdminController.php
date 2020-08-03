@@ -9,7 +9,7 @@ use App\User;
 
 
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -29,13 +29,13 @@ class HomeController extends Controller
     public function index()
     {
         $listBreadcrumbs = json_encode([
-            ["title" => "Home", "url" =>""]
+            ["title" => "Admin", "url" =>""]
         ]);
 
         $totalUsers = User::count();
         $totalArticles = Article::count();
         $totalAuthors = User::where('isAuthor', '=', '1')->count();
 
-        return view('home',compact('listBreadcrumbs', 'totalUsers', 'totalArticles', 'totalAuthors'));
+        return view('admin',compact('listBreadcrumbs', 'totalUsers', 'totalArticles', 'totalAuthors'));
     }
 }

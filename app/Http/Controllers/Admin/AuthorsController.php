@@ -18,7 +18,7 @@ class AuthorsController extends Controller
     public function index()
     {
         $listBreadcrumbs = json_encode([
-            ["title" => "Home", "url" => route('home')],
+            ["title" => "Admin", "url" => route('admin')],
             ["title" => "Lista de Autores", "url" => ""],
         ]);
 
