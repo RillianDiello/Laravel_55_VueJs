@@ -22,7 +22,11 @@
     <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
 
-    <table-list v-bind:titles="['#', 'Título', 'Descrição', 'Autor', 'Data']" v-bind:itens="{{json_encode($articlesList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/articles/" editar="/admin/articles/" deletar="/admin/articles/" token="{{csrf_token()}}" modal="yes">
+    <table-list v-bind:titles="['#', 'Título', 'Descrição', 'Autor', 'Data']" 
+    v-bind:itens="{{json_encode($articlesList)}}" 
+    ordem="desc" ordemcol="0" 
+    criar="#criar" detalhes="/admin/articles/" editar="/admin/articles/" 
+    deletar="/admin/articles/" token="{{csrf_token()}}" modal="yes">
 
     </table-list>
     <div align="center">
