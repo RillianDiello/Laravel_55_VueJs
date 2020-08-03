@@ -6,6 +6,8 @@ use App\Article;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesController extends Controller
 {
@@ -21,7 +23,8 @@ class ArticlesController extends Controller
             ["title" => "Lista de Artigos", "url" => ""],
         ]);
 
-        $articlesList = Article::select('id', 'title', 'description', 'datePublish')->paginate(5);
+      
+        $articlesList = Article::listArticles(5);
 
         return view('admin.articles.index', compact('listBreadcrumbs','articlesList'));
     }

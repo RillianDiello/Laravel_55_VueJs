@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Article;
+use App\User;
+
+
+
 class HomeController extends Controller
 {
     /**
@@ -26,6 +31,11 @@ class HomeController extends Controller
         $listBreadcrumbs = json_encode([
             ["title" => "Home", "url" =>""]
         ]);
-        return view('home',compact('listBreadcrumbs'));
+
+        $totalUsers = User::count();
+        $totalArticles = Article::count();
+        $totalAuthors = User::where('isAuthor', '=', '1')->count();
+
+        return view('home',compact('listBreadcrumbs', 'totalUsers', 'totalArticles', 'totalAuthors'));
     }
 }
