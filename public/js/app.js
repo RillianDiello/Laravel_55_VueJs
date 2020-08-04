@@ -1382,7 +1382,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(79);
+module.exports = __webpack_require__(78);
 
 
 /***/ }),
@@ -1434,6 +1434,7 @@ Vue.component('breadcrumbs', __webpack_require__(63));
 Vue.component('modal', __webpack_require__(66));
 Vue.component('modallink', __webpack_require__(69));
 Vue.component('formulary', __webpack_require__(72));
+Vue.component('card-article', __webpack_require__(75));
 var app = new Vue({
   el: '#app',
   store: store,
@@ -48158,11 +48159,138 @@ if (false) {
 }
 
 /***/ }),
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CardArticle.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a5590f42", Component.options)
+  } else {
+    hotAPI.reload("data-v-a5590f42", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["title", "description", "link", "imageDest", "dateArticle", "author", "sm", "md"]
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { class: "col-sm-" + (_vm.sm || "6") + " col-md-" + (_vm.md || "4") },
+    [
+      _c("div", { staticClass: "thumbnail" }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://coletiva.net/files/e4da3b7fbbce2345d7772b0674a318d5/midia_foto/20170713/118815-maior_artigo_jul17.jpg",
+            alt: "..."
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "caption" }, [
+          _c("small", [
+            _vm._v(_vm._s(_vm.dateArticle) + " - " + _vm._s(_vm.author))
+          ]),
+          _vm._v(" "),
+          _c("h3", [_vm._v(_vm._s(_vm.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.description))]),
+          _vm._v(" "),
+          _c("p", [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: _vm.link, role: "button" }
+              },
+              [_vm._v("Leia Mais")]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a5590f42", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

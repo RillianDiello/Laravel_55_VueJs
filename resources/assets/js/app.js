@@ -41,6 +41,7 @@ Vue.component('breadcrumbs', require('./components/Breadcrumb.vue'));
 Vue.component('modal', require('./components/modal/Modal.vue'));
 Vue.component('modallink', require('./components/modal/ModalLink.vue'));
 Vue.component('formulary', require('./components/Formulary.vue'));
+Vue.component('card-article', require('./components/CardArticle.vue'));
 const app = new Vue({
     el: '#app',
     store,
