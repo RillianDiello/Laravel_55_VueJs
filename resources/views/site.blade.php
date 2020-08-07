@@ -5,17 +5,25 @@
 <page length="12">
     <pannel title="Artigos">
         <div class="row">
+
+            @foreach ($list as $key => $value)
+                
+            
             <card-article
-            title = "Titulo Teste"
-            description = "descrição de teste"
-            link = "#"
-            imageDest = ""
-            dateArticle = "02/08/20120"
-            author = "Rillian"
-            sm="6"
-            md="4">
-        </card-article>
+                title = "{{$value->title}}"
+                description = "{{$value->description}}"
+                link = "#"
+                imageDest = ""
+                data = "{{$value->data}}"
+                author = "{{$value->author}}"
+                sm="6"
+                md="4">
+            </card-article>
+        @endforeach
            
+        </div>
+        <div align="center">
+            {{$list}}
         </div>
         
     </pannel>

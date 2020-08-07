@@ -6,8 +6,8 @@
         alt="..."
       />
       <div class="caption">
-        <small>{{dateArticle}} - {{author}}</small>
-        <h3>{{title}}</h3>
+        <small>{{data | formatData}} - {{author}}</small>
+        <h3>{{title }}</h3>
         <p>{{description}}</p>
         <p>
           <a v-bind:href="link" class="btn btn-primary" role="button">Leia Mais</a>
@@ -23,10 +23,20 @@ export default {
     "description",
     "link",
     "imageDest",
-    "dateArticle",
+    "data",
     "author",
     "sm",
     "md",
   ],
+  filters: {
+    formatData: function (value) {
+      if (!value) return "";
+
+      value = value.toString();
+
+      value = value.split("-");
+      return value[2] + "/" + value[1] + "/" + value[0];
+    },
+  },
 };
 </script>

@@ -11,8 +11,12 @@
 |
 */
 
+use App\Article;
+
 Route::get('/', function () {
-    return view('site');
+  $list = Article::listArticlesSite(3);
+  // dd($list);
+  return view('site', compact('list'));
 });
 
 Auth::routes();

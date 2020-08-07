@@ -52,7 +52,7 @@
     </div>
     <div class="form-group">
       <label for="datePublish">Data</label>
-      <input type="datetime-local" class="form-control" id="datePublish" name="datePublish" value="{{old('datePublish')}}">
+      <input type="date" class="form-control" id="datePublish" name="datePublish" value="{{old('datePublish')}}">
     </div>
   </formulary>
   <span slot="buttons">
@@ -76,7 +76,7 @@
     </div>
     <div class="form-group">
       <label for="data">Data</label>
-      <input type="datetime-local" class="form-control" id="data" name="datePublish" v-model="$store.state.item.datePublish">
+      <input type="date" class="form-control" id="data" name="datePublish" v-model="$store.state.item.datePublish">
     </div>
   </formulary>
   <span slot="buttons">

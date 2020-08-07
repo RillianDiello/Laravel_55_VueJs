@@ -22,10 +22,15 @@
 
       <tbody>
         <tr v-for="(item, index) in list" :key="index">
-          <td v-for="el in item" :key="el">{{el}}</td>
+          <td v-for="el in item" :key="el">{{el | formatData}}</td>
 
           <td v-if="detalhes || editar || deletar">
-            <form v-bind:id="index" v-if="deletar && token" v-bind:action="deletar + item.id" method="post">
+            <form
+              v-bind:id="index"
+              v-if="deletar && token"
+              v-bind:action="deletar + item.id"
+              method="post"
+            >
               <input type="hidden" name="_method" value="DELETE" />
               <input type="hidden" name="_token" v-bind:value="token" />
 
@@ -120,41 +125,58 @@ export default {
     "token",
     "ordem",
     "ordemcol",
-    "modal"
+    "modal",
   ],
-  data: function() {
+  data: function () {
     return {
       search: "",
       ordemAux: this.ordem || "asc",
-      ordemAuxCol: this.ordemcol || 0
+      ordemAuxCol: this.ordemcol || 0,
     };
   },
 
   methods: {
-    executeForm: function(index) {
+    executeForm: function (index) {
       document.getElementById(index).submit();
     },
-    ordemByColumn: function(colunm) {
+    ordemByColumn: function (colunm) {
       this.ordemAuxCol = colunm;
       if (this.ordemAux.toLowerCase() == "asc") {
         this.ordemAux = "desc";
       } else {
         this.ordemAux = "asc";
       }
-    }
+    },
   },
+
+  filters: {
+    formatData: function (value) {
+      if (!value) return "";
+
+      value = value.toString();
+
+      if (value.split("-").length === 3) {
+        value = value.split("-");
+        return value[2] + '/' + value[1] + '/' + value[0];
+
+      }
+
+      return value;
+    },
+  },
+
   computed: {
-    list: function() {
+    list: function () {
       let ordem = this.ordemAux;
       let ordemcol = this.ordemAuxCol;
-     
+
       let list = this.itens.data;
 
       ordem = ordem.toLowerCase();
       ordemcol = parseInt(ordemcol);
 
       if (ordem == "asc") {
-        list.sort(function(a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -164,7 +186,7 @@ export default {
           return 0;
         });
       } else {
-        list.sort(function(a, b) {
+        list.sort(function (a, b) {
           if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return 1;
           }
@@ -175,7 +197,7 @@ export default {
         });
       }
       if (this.search) {
-        return list.filter(res => {
+        return list.filter((res) => {
           res = Object.values(res);
           for (let k = 0; k < res.length; k++) {
             if (
@@ -189,8 +211,8 @@ export default {
         });
       }
       return list;
-    }
-  }
+    },
+  },
 };
 </script>
 
