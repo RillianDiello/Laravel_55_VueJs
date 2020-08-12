@@ -12,7 +12,7 @@
             <card-article
                 title = "{{$value->title}}"
                 description = "{{$value->description}}"
-                link = "#"
+                link = "{{route('article',[$value->id, str_slug($value->title)])}}"
                 imageDest = ""
                 data = "{{$value->data}}"
                 author = "{{$value->author}}"

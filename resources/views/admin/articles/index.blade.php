@@ -47,7 +47,7 @@
     </div>
     <div class="form-group">
       <label for="content">Conteudo</label>
-      <textarea id="content" name="content" class="form-control">{{old('description')}}</textarea>
+      <textarea id="content" name="content" class="form-control">{{old('content')}}</textarea>
 
     </div>
     <div class="form-group">
