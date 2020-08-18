@@ -17,12 +17,12 @@
   </div>
   @endif
 
-  <pannel title="Lista de Usuários">
+  <pannel title="Lista de Administradores">
 
     <breadcrumbs v-bind:list="{{$listBreadcrumbs}}"></breadcrumbs>
 
 
-    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/authors/" editar="/admin/authors/" deletar="/admin/authors/" token="{{csrf_token()}}" modal="yes">
+    <table-list v-bind:titles="['#', 'Nome', 'Email']" v-bind:itens="{{json_encode($modelList)}}" ordem="asc" ordemcol="1" criar="#criar" detalhes="/admin/adm/" editar="/admin/adm/" modal="yes">
 
     </table-list>
     <div align="center">
@@ -32,7 +32,7 @@
 </page>
 <modal name="add" title="Adicionar">
 
-  <formulary id="form-add" css="" action="{{route('authors.store')}}" method="post" enctype="" token="{{csrf_token()}}">
+  <formulary id="form-add" css="" action="{{route('adm.store')}}" method="post" enctype="" token="{{csrf_token()}}">
     <div class="form-group">
       <label for="name">Nome</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{old('name')}}">
@@ -41,25 +41,16 @@
       <label for="email">Email</label>
       <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}">
     </div>
-
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
     </div>
 
     <div class="form-group">
-      <label for="author">Autor</label>  
-      <select class="form-control" id="isAuthor" name="isAuthor">
-        <option {{(old('isAuthor') && old('isAuthor') == '0' ? 'selected' : '' )}} value="0"> Não</option>
-        <option {{(old('isAuthor') && old('isAuthor') == '1' ? 'selected' : '' )}} value="1"> Sim</option>
-      </select>
-    </div>
-
-    <div class="form-group">
       <label for="admin">Admin</label>  
       <select class="form-control" id="admin" name="admin">
         <option {{(old('admin') && old('admin') == '0' ? 'selected' : '' )}} value="0"> Não</option>
-        <option {{(old('admin') && old('admin') == '1' ? 'selected' : '' )}} value="1"> Sim</option>
+        <option {{(old('admin') && old('admin') == '1' ? 'selected' : '' )}} {{(!old('admin') ? 'selected' : '')}} value="1"> Sim</option>
       </select>
     </div>
 
@@ -71,7 +62,7 @@
 </modal>
 
 <modal name="editar" title="Editar">
-  <formulary id="form-edit" v-bind:action="'/admin/authors/' + $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
+  <formulary id="form-edit" v-bind:action="'/admin/adm/' + $store.state.item.id" method="put" enctype="" token="{{ csrf_token() }}">
     <div class="form-group">
       <label for="name">Nome</label>
       <input type="text" class="form-control" id="name" name="name" v-model="$store.state.item.name" placeholder="Nome">
@@ -85,13 +76,6 @@
       <input type="password" class="form-control" id="password" name="password">
     </div>
 
-    <div class="form-group">
-      <label for="author">Autor</label>  
-      <select class="form-control" id="isAuthor" name="isAuthor" v-model="$store.state.item.isAuthor">
-        <option value="0"> Não</option>
-        <option value="1"> Sim</option>
-      </select>
-    </div>
 
     <div class="form-group">
       <label for="admin">Admin</label>  
@@ -100,7 +84,7 @@
         <option value="1"> Sim</option>
       </select>
     </div>
-
+     
   </formulary>
   <span slot="buttons">
     <button form="form-edit" class="btn btn-info">Atualizar</button>

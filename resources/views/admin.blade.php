@@ -16,6 +16,9 @@
             <div class="col-md-4">
                 <box qtd="{{$totalAuthors}}" title="Autores" url="{{route('authors.index')}}" color="red" icon="ion ion-person"></box>
             </div>
+            <div class="col-md-4">
+                <box qtd="{{$totalAdmins}}" title="Administradores" url="{{route('adm.index')}}" color="green" icon="ion ion-person"></box>
+            </div>
 
         </div>
 

@@ -35,7 +35,8 @@ class AdminController extends Controller
         $totalUsers = User::count();
         $totalArticles = Article::count();
         $totalAuthors = User::where('isAuthor', '=', '1')->count();
+        $totalAdmins = User::where('admin', '=', '1')->count();
 
-        return view('admin',compact('listBreadcrumbs', 'totalUsers', 'totalArticles', 'totalAuthors'));
+        return view('admin',compact('listBreadcrumbs', 'totalUsers', 'totalArticles', 'totalAuthors', 'totalAdmins'));
     }
 }
